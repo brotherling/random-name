@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 80px;
+            height: 30px;
+            margin: 50px auto;
+            border: 1px solid #666;
+            line-height: 30px;
+            text-align:center;
+        }
+        .btn{
+            width: 80px;
+            margin: 0 auto;
+            padding-left: 15px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="btn">
+        <button id="start">开始</button>
+        <button id="stop">停止</button>
+    </div>
+</body>
+    <script>
+        $(function () {
+            let arr = ['张三', '李四', '王五', '赵六', '钱七', '赵云', '关羽', '张飞'];
+            let timeId;
+            $("#start").on("click", () => {
+                clearInterval(timeId);
+                timeId = setInterval(() => {
+                    let index = Math.floor(Math.random() * arr.length);
+                    $(".box").text(arr[index]);
+                }, 100);
+            });
+
+             $("#stop").on("click", () => {
+                clearInterval(timeId);
+            })
+        })
+    </script>
+</html>
